@@ -17,7 +17,6 @@ int main() {
         }
 
          if (input == "exit 0") {
-            std::cout << "Exiting shell...\n";
             break;
         }
 
