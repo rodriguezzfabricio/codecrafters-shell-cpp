@@ -1,13 +1,24 @@
 #include <iostream>
+#include <string>
+#include "print.h" // Ensure this contains the `printPrompt` function declaration
 
 int main() {
-  // Flush after every std::cout / std:cerr
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
+    // Flush output buffers for immediate printing
+    std::cout << std::unitbuf;
 
-  // Uncomment this block to pass the first stage
-    std::cout << "$ ";
+    while (true) {
+        // Display the shell prompt
+        printPrompt();
 
-  std::string input;
-  std::getline(std::cin, input);
+        // Get user input
+        std::string input;
+        if (!std::getline(std::cin, input)) {
+            break; // Exit the loop on EOF
+        }
+
+        // Print "command not found" for all inputs
+        std::cout << input << ": command not found" << std::endl;
+    }
+
+    return 0;
 }
