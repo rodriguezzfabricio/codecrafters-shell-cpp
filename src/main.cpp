@@ -16,8 +16,14 @@ int main() {
             break; // Exit the loop on EOF
         }
 
+         if (input == "exit 0") {
+            std::cout << "Exiting shell...\n";
+            break;
+        }
+
         // Print "command not found" for all inputs
         std::cout << input << ": command not found" << std::endl;
+        
     }
 
     return 0;
