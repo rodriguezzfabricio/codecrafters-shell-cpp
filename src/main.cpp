@@ -1,20 +1,18 @@
 #include <iostream>
 #include <string>
-#include "print.h" // Ensure this contains the `printPrompt` function declaration
-#include "echo.h"  // Include the echo command handler
+#include "print.h"
+#include "echo.h"
+#include "type.h"
 
 int main() {
-    // Flush output buffers for immediate printing
     std::cout << std::unitbuf;
 
     while (true) {
-        // Display the shell prompt
-        printPrompt();
+        printPrompt(); // Print the shell prompt
 
-        // Get user input
         std::string input;
         if (!std::getline(std::cin, input)) {
-            break; // Exit the loop on EOF
+            break; // Exit on EOF
         }
 
         // Handle exit command
@@ -23,9 +21,14 @@ int main() {
         }
 
         // Handle echo command
-        const std::string echoCommand = "echo ";
-        if (input.substr(0, echoCommand.size()) == echoCommand) {
+        if (input.substr(0, 5) == "echo ") {
             handleEcho(input);
+            continue;
+        }
+
+        // Handle type command
+        if (input.substr(0, 5) == "type ") {
+            handleType(input);
             continue;
         }
 
