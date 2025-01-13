@@ -42,11 +42,14 @@ int main() {
             args.push_back(token);
         }
 
-        // If a custom executable name is provided
+        // Print arguments in the expected format
         if (!args.empty()) {
-            std::cout << "Program was passed " << args.size() << " args (including program name)." << std::endl;
             for (size_t i = 0; i < args.size(); ++i) {
-                std::cout << "Arg " << i << ": " << args[i] << std::endl;
+                if (i == 0) {
+                    std::cout << "Arg #" << i << " (program name): " << args[i] << std::endl;
+                } else {
+                    std::cout << "Arg #" << i << ": " << args[i] << std::endl;
+                }
             }
             continue;
         }
