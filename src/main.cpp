@@ -44,6 +44,9 @@ int main() {
 
         // Print arguments in the expected format
         if (!args.empty()) {
+            // Print the total number of arguments, including the program name
+            std::cout << "Program was passed " << args.size() << " args (including program name)." << std::endl;
+
             for (size_t i = 0; i < args.size(); ++i) {
                 if (i == 0) {
                     std::cout << "Arg #" << i << " (program name): " << args[i] << std::endl;
